@@ -35,7 +35,10 @@ export default function App() {
             const data = await response.json();
             
             setMovies(data.results || []);
-            setTotalPages(data.total_pages || 1);
+            // Only update total pages on the first page to prevent it from fluctuating during pagination
+            if (page === 1) {
+                setTotalPages(data.total_pages || 1);
+            }
         } catch (err) {
             console.error('Error fetching movies:', err);
             setError('Failed to load movies. Please check your console.');
