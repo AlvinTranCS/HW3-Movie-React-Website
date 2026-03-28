@@ -9,8 +9,8 @@ export default function MovieGrid({ movies, loading, error }) {
                 ) : movies.length === 0 && !loading ? (
                     <p style={{ gridColumn: '1 / -1', textAlign: 'center' }}>No movies found.</p>
                 ) : (
-                    movies.map((movie) => (
-                        <MovieCard key={movie.id} movie={movie} />
+                    movies.map((movie, index) => (
+                        <MovieCard key={`${movie.id}-${index}`} movie={movie} />
                     ))
                 )}
             </div>
